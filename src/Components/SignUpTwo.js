@@ -14,7 +14,7 @@ const SignUpTwo = ({ formData, setFormData }) => {
       />
       <input
         type="email"
-        placeholder="Phone Number"  
+        placeholder="email"  
         className="border-b-2 px-3 my-6 text-xl border-[#A4A4A4] w-3/4 focus:outline-none"
         value={formData.email}
         onChange={(e) => {

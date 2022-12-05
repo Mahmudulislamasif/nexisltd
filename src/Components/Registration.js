@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../Components/Assests/ultimate hrm logo-05-02 2.png'
 import Image from '../Components/Assests/istockphoto-1321277096-612x612 1.png'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import SignUpOne from './SignUpOne';
 import SignUpTwo from './SignUpTwo';
 import SignUpThree from './SignUpThree';
@@ -9,6 +9,8 @@ import { FaGreaterThan } from 'react-icons/fa';
 import {  FaLessThan} from 'react-icons/fa';
 const Registration = () => {
     const [page, setPage] = useState(0);
+    const navigate=useNavigate()
+    const [errorMsg,setErrorMsg]=useState('')
     const [formData, setFormData] = useState({
       email: "",
       password: "",
@@ -29,7 +31,7 @@ const Registration = () => {
              })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+               navigate('/home')
             });
         
     }
@@ -78,6 +80,7 @@ const Registration = () => {
                     >
                         {page === FormTitles.length - 1 ? "Submit" : "Next Steps"}
                     </button>
+                    {errorMsg}
                     </div>
                 </div>
                  {

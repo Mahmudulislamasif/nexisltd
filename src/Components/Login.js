@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Logo from '../Components/Assests/ultimate hrm logo-05-02 2.png'
 import Image from '../Components/Assests/istockphoto-1321277096-612x612 1.png'
 import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 const Login = () => {
     const navigate=useNavigate()
+    const [token, setToken] = useState('');
     const onSubmitBlog=(e)=>
     {
         e.preventDefault();
@@ -21,8 +22,10 @@ const Login = () => {
              })
             .then(res => res.json())
             .then(data => {
-               console.log(data)
-               navigate('/home')
+                const accessToken = data.access_token;
+                localStorage.setItem('accessToken', accessToken);
+                setToken(accessToken);
+                navigate('/home')
             });
         
     }
